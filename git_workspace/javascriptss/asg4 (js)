@@ -1,0 +1,49 @@
+for (var i=1; i <= 20; i++)
+{
+    if (i % 15 == 0)
+        console.log("FizzBuzz");
+    else if (i % 3 == 0)
+        console.log("Fizz");
+    else if (i % 5 == 0)
+        console.log("Buzz");
+    else
+        console.log(i);
+}
+
+
+*****************************************************************************************
+
+function productItem(img, name, price, id) {
+    this.img = img;
+    this.name = name;
+    this.price = price;
+    this.id = id;
+}
+
+
+let myCartItem = localStorage.getItem("myCartItem");
+myCartItem = JSON.parse(myCartItem);
+
+if (myCartItem === null) {
+    console.log('Cart is Empty');
+} else {
+    myCartItem.forEach(e => {
+        console.log(e);
+    })
+}
+
+var html = "<table border='1|1'>";
+for (var i = 0; i < myCartItem.length; i++) {
+    html += "<th>" + "Image" + "</th>";
+    html += "<th>" + "Product Name" + "</th>";
+    html += "<th>" + "Price" + "</th>";
+    html += "<tr>";
+    html += "<td>" + '<img src="' + myCartItem[i].img + '">' + "</td>";
+    html += "<td>" + myCartItem[i].name + "</td>";
+    html += "<td>" + "R" + myCartItem[i].price + "</td>";
+
+    html += "</tr>";
+
+}
+html += "</table>";
+document.getElementById("cartSection").innerHTML = html;
