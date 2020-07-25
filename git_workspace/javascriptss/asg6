@@ -1,0 +1,101 @@
+Assignment no : 6
+
+Q1)
+
+<script type="text/javascript">
+  var c = ["blue", "black", "yellow", "red"];
+
+  function changeColor() {
+    setTimeout(function loop() {
+      document.bgColor = c.shift();
+      if (c.length) {
+        setTimeout(loop, 5000);
+      }
+    }, 5000);
+  }
+
+  function start() {
+    setInterval(changeColor(), 20000);
+  }
+</script>
+
+<body onload="start()">
+</body>
+
+
+Q2)
+
+<script type="text/javascript">
+	function printTable(){
+		var num;
+		num=Number(document.getElementById('txtNumber').value);
+		for(var i=1; i<=10; i++){
+			var pTag= document.getElementById('pPrint');
+			pTag.innerHTML += (num*i) + "<br/>" 
+		}
+	}
+</script>
+HTML Source Code with JavaScript
+<!--JavaScript - Function to Display Table of an entered Number.-->
+<html>
+	<head>
+		<title>JavaScript - Function to Display Table of an entered Number.</title>
+		<script type="text/javascript">
+			function printTable(){
+				var num;
+				num=Number(document.getElementById('txtNumber').value);
+				for(var i=1; i<=10; i++){
+					var pTag= document.getElementById('pPrint');
+					pTag.innerHTML += (num*i) + "<br/>" 
+				}
+			}
+		</script>
+	</head>
+
+	<body style="text-align: center;">
+		<h1>JavaScript - Function to Display Table of an entered Number.</h1>
+		<p><input type="text" id="txtNumber" placeholder="Enter number"/></p>
+		<p><input type="button" value="Print Table." onclick='printTable()'/>
+		<!--print numbers-->
+		<p id="pPrint"></p>
+	</body>
+
+</html>
+
+
+Q3)
+
+
+<script type="text/javascript">
+
+var loginName = "";
+var userid = _spPageContextInfo.userId;
+GetCurrentUser();
+
+function GetCurrentUser() {
+var requestUri = _spPageContextInfo.webAbsoluteUrl + "/_api/web/getuserbyid(" + userid + ")";
+
+var requestHeaders = { "accept" : "application/json;odata=verbose" };
+
+$.ajax({
+  url : requestUri,
+  contentType : "application/json;odata=verbose",
+  headers : requestHeaders,
+  success : onSuccess,
+  error : onError
+  });
+}
+
+function onSuccess(data, request) {
+    var loginName = data.d.Title;
+    alert("Hello " + loginName);
+
+    // to set the "hello username" into the page
+    document.getElementById("id").innerHTML = "Hello " + loginName;
+    }
+
+function onError(error) {
+  alert(error);
+  }
+
+</script>
